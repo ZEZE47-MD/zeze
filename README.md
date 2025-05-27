@@ -19,7 +19,7 @@
 
 ##  🛰️FORK MY REPO❣️
 <a 
-   align="center"><a href="https://github.com/humphreymbise/ZEZE47-V1/fork"> <img src="https://img.shields.io/badge/FORK%20REPO-colorless?style=for-the-badge&logo=porsche" width="220" height="38.45"/></a></p>
+   align="center"><a href="https://github.com/ZEZE47-MD/zeze/fork"> <img src="https://img.shields.io/badge/FORK%20REPO-colorless?style=for-the-badge&logo=porsche" width="220" height="38.45"/></a></p>
 
 
  ## 👇✓GETING SESSIOM ID✓
@@ -32,7 +32,7 @@
 
  ## 👇¥DEPLOY TO HEROKU¥
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/ZEZE47-MD/ZEZE47)
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/ZEZE47-MD/zeze)
 
 ## 👇£CREATE ACCOUNT ON HEROKU© 
 [![Create Account on Heroku](https://img.shields.io/badge/GET%20CREATE.HEROKU-magenta?style=for-the-badge&logo=opencv&logoColor=white)](https://heroku.com)  
