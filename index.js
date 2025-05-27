@@ -862,12 +862,12 @@ zk.ev.on('group-participants.update', async (group) => {
                 await (0, baileys_1.delay)(300);
                 console.log("------------------/-----");
                 console.log("Zeze MD is Online ✅\n\n");
-                //chargement des clintplugins 
+                //chargement des zezeplugins 
                 console.log("Loading Zeze Commands ...\n");
-                fs.readdirSync(__dirname + "/clintplugins").forEach((fichier) => {
+                fs.readdirSync(__dirname + "/zezeplugins").forEach((fichier) => {
                     if (path.extname(fichier).toLowerCase() == (".js")) {
                         try {
-                            require(__dirname + "/clintplugins/" + fichier);
+                            require(__dirname + "/zezeplugins/" + fichier);
                             console.log(fichier + " Installed Successfully✔️");
                         }
                         catch (e) {
