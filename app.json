@@ -1,0 +1,137 @@
+{
+  "name": "ZEZE47-MD",
+  "description": "Zeze is a multidevice WhatsApp bot built to make your WhatsApp enjoyable..",
+  "keywords": [
+    "bot",
+    "node",
+    "baileys",
+    "whatsapp"
+  ],
+  "logo": "https://i.imgur.com/jE8eQsP.jpeg",
+  "repository": "https://github.com/ZEZE47-MD/ZEZE47",
+  "succes_url": "/",
+  "stack": "container",
+  "env": {
+    "PREFIX": {
+      "description": "Choose your bot's prefix",
+      "value": ".",
+      "required": true
+    },
+    "AUTO_READ_STATUS": {
+      "description": "Your contact status will be read automatically (type 'yes' to activate or 'no' to deactivate; don't write in capital letters)",
+      "value": "yes",
+      "required": false
+    },
+    "AUTO_REPLY": {
+      "description": "This sets a greeting message when someone texts you automatically",
+      "value": "yes",
+      "required": false
+    },
+        "AUTOBIO": {
+      "description": "Updates BIO texts automatically",
+      "value": "yes",
+      "required": false
+    },
+    "AUTO_LIKE_STATUS": {
+      "description": "Your contact status will be liked automatically (type 'yes' to activate or 'no' to deactivate; don't write in capital letters)",
+      "value": "yes",
+      "required": false
+    },
+    "CHATBOT": {
+      "description": "If turned on, the chatbot will automatically chat in your private messages or groups.",
+      "value": "no",
+      "required": false
+    },
+    "AUTO_DOWNLOAD_STATUS": {
+      "description": "Your contact status will be downloaded automatically and sent to you (type 'yes' to activate or 'no' to deactivate; don't write in capital letters)",
+      "value": "no",
+      "required": false
+    },
+    "PM_PERMIT": {
+      "description": "Restrict other users from using your bot in private messages (type 'yes' to activate or 'no' to deactivate; don't write in capital letters)",
+      "value": "yes",
+      "required": false
+    },
+    "BOT_NAME": {
+      "description": "Give a name for your bot",
+      "value": "ZEZE47-MD",
+      "required": false
+    },
+    "PUBLIC_MODE": {
+      "description": "Set 'yes' to make your bot public or 'no' to keep it private",
+      "value": "yes",
+      "required": false
+    },
+    "HEROKU_API_KEY": {
+      "description": "Insert your Heroku API key (required)",
+      "value": "",
+      "required": false 
+    },
+    "HEROKU_APP_NAME": {
+      "description": "Insert your Heroku app name (required)",
+      "value": "",
+      "required": false
+    },
+    "SESSION_ID": {
+      "description": "Enter your session ID, the code you receive after scanning the QR code",
+      "value": "",
+      "required": true
+    },
+    "OWNER_NAME": {
+      "description": "Your name",
+      "value": "Zezetech",
+      "required": false
+    },
+    "AUTO_READ_MESSAGES": {
+      "description": "yes toactivate no to deactivate",
+      "value": "no",
+      "required": false  
+    },
+    "NUMERO_OWNER": {
+      "description": "Your phone number (exclude '+' and area code, e.g., '255682937675')",
+      "value": "255682937675",
+      "required": false
+    },
+    "WARN_COUNT": {
+      "description": "Set the warning limit for warning commands",
+      "value": "3",
+      "required": false
+    },
+    "PRESENCE": {
+      "description": "Mark your presence: 1 for online, 2 for typing, 3 for recording, or leave blank for real state",
+      "value": "",
+      "required": false
+    },
+    "ANTI_DELETE_MESSAGE": {
+      "description": "Enable anti-delete message (set 'yes' to activate or 'no' to deactivate)",
+      "value": "yes",
+      "required": false
+    },
+    "ANTICALL": {
+      "description": "Automatically decline incoming calls (set 'on' to activate or 'off' to deactivate)",
+      "value": "no",
+      "required": false
+          },
+    "ANTICALL_MSG": {
+      "description": "Automatically decline incoming calls (set 'on' to activate or 'off' to deactivate)",
+      "value": "😩dear comrade i am very busy 🫤..leave a message instead",
+      "required": false
+    },
+    "AUTO_REACTION": {
+      "description": "Set 'yes' to enable bot reactions to messages in private chats",
+      "value": "no",
+      "required": false
+    }
+  },
+  "formation": {
+    "worker": {
+      "quantity": 1,
+      "size": "standard-2x"
+    }
+  },
+  "addons": [
+    {
+      "plan": "heroku-postgresql:essential-0"
+    }
+  ]
+    }
