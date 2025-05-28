@@ -574,7 +574,7 @@ try {
             };
             var txt = "bot detected, \n";
            // txt += `message supprimé \n @${auteurMessage.split("@")[0]} rétiré du groupe.`;
-            const gifLink = "https://raw.githubusercontent.com/ZEZE47-MD/ZEZE47/main/media/remover.gif";
+            const gifLink = "https://raw.githubusercontent.com/ZEZE47-MD/zeze/main/media/remover.gif";
             var sticker = new Sticker(gifLink, {
                 pack: 'Zeze-MD',
                 author: conf.OWNER_NAME,
@@ -646,7 +646,7 @@ try {
          
             /////////////////////////
             
-            //execution des clintplugins   
+            //execution des zezeplugins   
             if (verifCom) {
                 //await await zk.readMessages(ms.key);
                 const cd = evt.cm.find((zokou) => zokou.nomCom === (com));
