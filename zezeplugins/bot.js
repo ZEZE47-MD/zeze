@@ -34,7 +34,7 @@ STATUS
 
 ◈━━━━━━━━━━━━━━━━◈
 │❒⁠⁠⁠⁠ RAM : ${format(os.totalmem() - os.freemem())}/${format(os.totalmem())}
-│❒⁠⁠⁠⁠ DEV : md_zeze
+│❒⁠⁠⁠⁠ DEV : zeze_md
 ⁠⁠⁠⁠◈━━━━━━━━━━━━━━━━◈
   `;
 
@@ -72,7 +72,7 @@ STATUS
       }
 
       // Send random audio as a voice note
-      const audioFolder = __dirname + "/../md_zeze/";
+      const audioFolder = __dirname + "/../zeze_md/";
       console.log("Audio folder path:", audioFolder);
 
       // Check if folder exists
@@ -87,8 +87,8 @@ STATUS
       console.log("Available audio files:", audioFiles);
 
       if (audioFiles.length === 0) {
-        console.log("https://files.catbox.moe/rsv4id.mp3");
-        repondre(` 𝐚𝐮𝐝𝐢𝐨 𝐟𝐢𝐥𝐞𝐬 𝐟𝐨𝐮𝐧𝐝 𝐢𝐧 md_zeze 𝐟�{o𝐥𝐝𝐞𝐫`);
+        console.log("No MP3 files found in folder");
+        repondre(`𝐍𝐨 𝐚𝐮𝐝𝐢𝐨 𝐟𝐢𝐥𝐞𝐬 𝐟𝐨𝐮𝐧𝐝 𝐢𝐧 zeze_md 𝐟�{o𝐥𝐝𝐞𝐫`);
         return;
       }
 
