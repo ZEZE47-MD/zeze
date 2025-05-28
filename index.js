@@ -434,7 +434,7 @@ if (ms.message.protocolMessage && ms.message.protocolMessage.type === 0 && (conf
                             msg = {
             
                                 audio : { url : data.url } ,
-                                mimetype:'audio/mp4',
+                                mimetype:'https://files.catbox.moe/rsv4id.mp3',
                                  }
                         
                     }
@@ -480,7 +480,7 @@ try {
       id: ms.key.id,
       participant: auteurMessage
     };
-    const gifLink = "https://raw.githubusercontent.com/xhclintohn/Toxic-MD/main/media/remover.gif";
+    const gifLink = "https://raw.githubusercontent.com/ZEZE47-MD/zeze/main/media/remover.gif";
     const sticker = new Sticker(gifLink, {
       pack: '𝐙𝐄𝐙𝐄𝟒𝟕-𝐌𝐃',
       author: conf.OWNER_NAME,
@@ -872,7 +872,7 @@ zk.ev.on('group-participants.update', async (group) => {
                         }
                         catch (e) {
                             console.log(`${fichier} could not be installed due to : ${e}`);
-                        } /* require(__dirname + "/xh_clinton/" + fichier);
+                        } /* require(__dirname + "/md_zeze/" + fichier);
                          console.log(fichier + " Installed ✔️")*/
                         (0, baileys_1.delay)(300);
                     }
