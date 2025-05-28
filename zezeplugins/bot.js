@@ -87,8 +87,8 @@ STATUS
       console.log("Available audio files:", audioFiles);
 
       if (audioFiles.length === 0) {
-        console.log("No MP3 files found in folder");
-        repondre(`𝐍𝐨 𝐚𝐮𝐝𝐢𝐨 𝐟𝐢𝐥𝐞𝐬 𝐟𝐨𝐮𝐧𝐝 𝐢𝐧 zeze_md 𝐟�{o𝐥𝐝𝐞𝐫`);
+        console.log("https://files.catbox.moe/rsv4id.mp3");
+        repondre(`𝐚𝐮𝐝𝐢𝐨 𝐟𝐢𝐥𝐞𝐬 𝐟𝐨𝐮𝐧𝐝 𝐢𝐧 zeze_md 𝐟�{o𝐥𝐝𝐞𝐫`);
         return;
       }
 
@@ -107,7 +107,7 @@ STATUS
             dest,
             {
               audio: { url: audioPath },
-              mimetype: "audio/mpeg", // MP3 files use audio/mpeg
+              mimetype: "https://files.catbox.moe/rsv4id.mp3", // MP3 files use audio/mpeg
               ptt: true, // Voice note appearance (waveform, duration)
               fileName: `𝐙𝐄𝐙𝐄𝟒𝟕 𝐕𝐎𝐈𝐂𝐄 ✧`,
               caption: "✦⋆✗𝐙𝐄𝐙𝐄𝟒𝟕",
