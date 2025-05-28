@@ -1,6 +1,6 @@
 const { zokou } = require("../framework/zokou");
 
-const ZEZE47_MD = "\u{1D413}\u{1D40E}\u{1D417}\u{1D408}\u{1D402}-\u{1D40C}\u{1D403}"; // 𝐓𝐎𝐗𝐈𝐂-𝐌𝐃
+const ZEZE47_MD = "\u{1D413}\u{1D40E}\u{1D417}\u{1D408}\u{1D402}-\u{1D40C}\u{1D403}"; // 𝐙𝐄𝐙𝐄𝟒𝟕-𝐌𝐃
 
 zokou({ nomCom: "join", categorie: 'Group', reaction: "⭐" }, async (dest, zk, commandeOptions) => {
   const { repondre, arg, ms } = commandeOptions;
@@ -55,7 +55,7 @@ ${ZEZE47_MD}
     const groupName = groupMetadata.subject;
 
     const message = `
-${TOXIC_MD}
+${ZEZE47_MD}
 
 ◈━━━━━━━━━━━━━━━━◈
 │❒ \u{1D446}\u{1D462}\u{1D450}\u{1D450}\u{1D452}\u{1D460}\u{1D460}\u{1D453}\u{1D462}\u{1D459}\u{1D459}\u{1D466} \u{1D457}\u{1D45C}\u{1D456}\u{1D45B}\u{1D452}\u{1D451} \u{1D454}\u{1D45F}\u{1D45C}\u{1D462}\u{1D45D} 🤝
