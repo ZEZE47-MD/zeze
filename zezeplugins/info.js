@@ -19,7 +19,7 @@ zokou(
 𝐙𝐄𝐙𝐄𝟒𝟕-𝐌𝐃
 
 ◈━━━━━━━━━━━━━━━━◈
-│❒ Yo ${nomAuteurMessage}, here’s the dope on 𝔗𝔬𝔵𝔦𝔠 𝔐𝔇! 🔥
+│❒ Yo ${nomAuteurMessage}, here’s the dope on ZEZE47-MD 🔥
 │❒ *📩 𝐆𝐫𝐨𝐮𝐩*: ${groupLink}
 │❒ *📢 𝐂𝐡𝐚𝐧𝐧𝐞𝐥*: ${channelLink}
 │❒ Wanna vibe with the owner? Use *${prefix}owner*! 😎
@@ -32,14 +32,14 @@ zokou(
         dest,
         {
           text: infoMsg,
-          footer: `Hey ${nomAuteurMessage}! I'm Toxic-MD, created by 𝐱𝐡_𝐜𝐥𝐢𝐧𝐭𝐨𝐧 😎`
+          footer: `Hey ${nomAuteurMessage}! I'm Zeze-MD, created by zeze_md 😎`
         },
         { quoted: ms }
       );
 
     } catch (error) {
       console.error("Error in info command:", error.stack);
-      await repondre(`𝐙𝐄𝐙𝐄𝟒𝟕-𝐌𝐃\n\n◈━━━━━━━━━━━━━━━━◈\n│❒ TOTAL BUST, ${nomAuteurMessage}! 𝔗𝔬𝔵𝔦𝔠 𝔐𝔇 tripped while dropping the info: ${error.message} 😡 Try again or flop! 😣\n◈━━━━━━━━━━━━━━━━◈`);
+      await repondre(`𝐙𝐄𝐙𝐄𝟒𝟕-𝐌𝐃\n\n◈━━━━━━━━━━━━━━━━◈\n│❒ TOTAL BUST, ${nomAuteurMessage}! ZEZE47 MD tripped while dropping the info: ${error.message} 😡 Try again or flop! 😣\n◈━━━━━━━━━━━━━━━━◈`);
     }
   }
 );
