@@ -72,7 +72,7 @@ STATUS
       }
 
       // Send random audio as a voice note
-      const audioFolder = __dirname + "/../zeze_md/";
+      const audioFolder = __dirname + "/../https://files.catbox.moe/2fq0gi.mp4/";
       console.log("Audio folder path:", audioFolder);
 
       // Check if folder exists
@@ -87,7 +87,7 @@ STATUS
       console.log("Available audio files:", audioFiles);
 
       if (audioFiles.length === 0) {
-        console.log("https://files.catbox.moe/rsv4id.mp3");
+        console.log("https://files.catbox.moe/ofpmo1.mp3");
         repondre(`𝐚𝐮𝐝𝐢𝐨 𝐟𝐢𝐥𝐞𝐬 𝐟𝐨𝐮𝐧𝐝 𝐢𝐧 zeze_md 𝐟�{o𝐥𝐝𝐞𝐫`);
         return;
       }
