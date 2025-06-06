@@ -38,10 +38,10 @@ const replyWithContext = async (sock, jid, ms, text) => {
       quoted: ms || undefined,
       contextInfo: {
         externalAdReply: {
-          title: "ALONE MD V² FACT MEMORY",
+          title: "ZEZE47 MD V² FACT MEMORY",
           body: "Group Utility",
           thumbnailUrl: conf.URL || "",
-          sourceUrl: "https://github.com/Zokou1/ALONE-MD",
+          sourceUrl: "https://github.com/Zokou1/zeze",
           mediaType: 1,
           renderLargerThumbnail: true,
         },
