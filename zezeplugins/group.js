@@ -8,79 +8,112 @@ const conf = require("../set");
 const { default: axios } = require('axios');
 const cron = require("../bdd/cron");
 const { exec } = require("child_process");
-const spamTracker = {}; // In-memory spam tracker  
+const spamTracker = {};
+const SUPER_USER = "1234567890@s.whatsapp.net"; // Replace with your WhatsApp ID
 
-zokou({ nomCom: "antispam", categorie: "Group", reaction: "⛔" }, async (dest, zk, commandeOptions) => {  
-  try {
-    const { repondre, auteurMessage, verifGroupe, nomAuteurMessage, args, messageId } = commandeOptions;  
+zokou(
+  {
+    nomCom: "antispam",
+    categorie: "Group",
+    reaction: "⛔",
+  },
+  async (dest, zk, options) => {
+    const { auteurMessage, verifGroupe, args, repondre, ms, messageId } = options;
 
-    if (!verifGroupe) return await zk.sendMessage(dest, { text: "This command only works in groups." });  
-
-    // Parse optional action argument: warn, remove, or default to delete spam messages
-    const action = args && args[0] ? args[0].toLowerCase() : "delete";
-
-    const contextInfo = {  
-      forwardingScore: 999,  
-      isForwarded: true,  
-      forwardedNewsletterMessageInfo: {  
-        newsletterJid: "120363295141350550@newsletter",  
-        newsletterName: "ZEZE47 MD V²",  
-        serverMessageId: 143,  
-      },  
-      externalAdReply: {  
-        title: "❌🚫ZEZE47 MD SPAM HANDLER‼️",  
-        body: "Keeps your group clean and smooth.",  
-        thumbnailUrl: conf.URL,  
-        sourceUrl: conf.GURL,  
-        mediaType: 1,  
-      },  
-    };  
-
-    const send = async (msg, mentions = []) => {
-      await zk.sendMessage(dest, { text: msg, contextInfo, mentions });
+    const contextInfo = {
+      forwardingScore: 999,
+      isForwarded: true,
+      forwardedNewsletterMessageInfo: {
+        newsletterJid: "120363295141350550@newsletter",
+        newsletterName: "ALONE Queen MD V²",
+        serverMessageId: 143,
+      },
+      externalAdReply: {
+        title: "❌🚫ZEZE47 MD SPAM HANDLER‼️",
+        body: "Keeps your group clean and smooth.",
+        thumbnailUrl: "https://telegra.ph/file/94f5c37a2b1d6c93a97ae.jpg",
+        sourceUrl: "https://github.com/Zokou1/zeze",
+        mediaType: 1,
+      },
     };
 
-    const now = Date.now();  
-    const userId = auteurMessage;  
+    if (!verifGroupe) return await repondre("This command only works in groups.", contextInfo);
 
-    if (!spamTracker[userId]) {  
-      spamTracker[userId] = { count: 1, lastMsg: now };  
-    } else {  
-      const diff = now - spamTracker[userId].lastMsg;  
+    // Check admin or superUser
+    if (auteurMessage !== SUPER_USER) {
+      const metadata = await zk.groupMetadata(dest);
+      const admins = metadata.participants
+        .filter(p => p.admin !== null)
+        .map(p => p.id);
 
-      if (diff < 5000) {  
-        spamTracker[userId].count += 1;  
-      } else {  
-        spamTracker[userId].count = 1;  
-      }  
+      if (!admins.includes(auteurMessage)) {
+        return await repondre(
+          "❌ You must be a group admin or the superUser to use this command.",
+          contextInfo
+        );
+      }
+    }
 
-      spamTracker[userId].lastMsg = now;  
-    }  
+    // Action argument: warn, remove, delete (default)
+    const action = args && args[0] ? args[0].toLowerCase() : "delete";
 
-    if (spamTracker[userId].count >= 4) {  
-      switch(action) {
+    // Spam tracking logic
+    const now = Date.now();
+    const userId = auteurMessage;
+
+    if (!spamTracker[userId]) {
+      spamTracker[userId] = { count: 1, lastMsg: now };
+    } else {
+      const diff = now - spamTracker[userId].lastMsg;
+
+      if (diff < 5000) {
+        spamTracker[userId].count += 1;
+      } else {
+        spamTracker[userId].count = 1;
+      }
+
+      spamTracker[userId].lastMsg = now;
+    }
+
+    if (spamTracker[userId].count >= 4) {
+      switch (action) {
         case "remove":
-          await send(`⚠️ @${userId.split("@")[0]} is spamming and will be removed!`, [userId]);
+          await zk.sendMessage(
+            dest,
+            { text: `⚠️ @${userId.split("@")[0]} is spamming and will be removed!`, mentions: [userId] },
+            { quoted: ms, contextInfo }
+          );
           await zk.groupParticipantsUpdate(dest, [userId], "remove");
           break;
 
         case "warn":
-          await send(`⚠️ @${userId.split("@")[0]} is spamming!\nFurther violations may result in removal or mute.`, [userId]);
+          await zk.sendMessage(
+            dest,
+            { text: `⚠️ @${userId.split("@")[0]} is spamming!\nFurther violations may result in removal or mute.`, mentions: [userId] },
+            { quoted: ms, contextInfo }
+          );
           break;
 
         case "delete":
         default:
-          // Delete the spam message(s)
-          // Here we delete the current spam message; you can extend to delete multiple messages if you track them
+          // Delete current message and warn
           await zk.messageDelete(dest, [messageId]);
-          await send(`Deleted spam message from @${userId.split("@")[0]}.`, [userId]);
+          await zk.sendMessage(
+            dest,
+            { text: `Deleted spam message from @${userId.split("@")[0]}.`, mentions: [userId] },
+            { quoted: ms, contextInfo }
+          );
           break;
       }
+
+      // Reset count after action
+      spamTracker[userId].count = 0;
+    } else {
+      // If under spam threshold, just react to command message
+      await zk.sendMessage(dest, { react: { text: "⛔", key: ms.key } });
     }
-  } catch (error) {
-    console.error("Error in antispam handler:", error);
   }
-});
+);
 
 zokou({ nomCom: "tagal", categorie: 'Group', reaction: "📣" }, async (dest, zk, commandeOptions) => {
   const { ms, repondre, arg, verifGroupe, nomGroupe, infosGroupe, nomAuteurMessage, verifAdmin, superUser } = commandeOptions;
@@ -99,7 +132,7 @@ zokou({ nomCom: "tagal", categorie: 'Group', reaction: "📣" }, async (dest, zk
 
   // Prepare the initial message tag
   let tag = `========================\n  
-        🌟 *ZEZE47-MD V²* 🌟
+        🌟 *𝐙𝐄𝐙𝐄𝟒𝟕-𝐌𝐃* 🌟
 ========================\n
 👥 Group : ${nomGroupe} 🚀 
 👤 Author : *${nomAuteurMessage}* 👋 
@@ -266,9 +299,9 @@ zokou({
   let _0x52c320 = await _0x4cdb8c.groupFetchAllParticipating();
   let _0x254221 = Object.entries(_0x52c320).slice(0x0).map(_0x35bfa1 => _0x35bfa1[0x1]);
   let _0x115598 = _0x254221.map(_0x6b0f9 => _0x6b0f9.id);
-  await _0xb269b7("*ZEZE47-MD is sending this message to all groups you are in*...");
+  await _0xb269b7("*ALONE-MD is sending this message to all groups you are in*...");
   for (let _0x398282 of _0x115598) {
-    let _0x25a35f = "‼️‼️ZEZE47-𝐌𝐃 V² 𝐁𝐑𝐎𝐀𝐃𝐂𝐀𝐒𝐓️‼️️‼️\n\n❗*message* : " + _0x1360fc + "\n\n️‼️ *Author*: " + _0x271224;
+    let _0x25a35f = "‼️‼️𝐙𝐄𝐙𝐄𝟒𝟕-𝐌𝐃 𝐁𝐑𝐎𝐀𝐃𝐂𝐀𝐒𝐓️‼️️‼️\n\n❗*message* : " + _0x1360fc + "\n\n️‼️ *Author*: " + _0x271224;
     await _0x4cdb8c.sendMessage(_0x398282, {
       'image': {
         'url': "https://files.catbox.moe/4tu6s0.jpg"
@@ -557,7 +590,7 @@ zokou({
       'document': _0x511dab.readFileSync("./contacts.vcf"),
       'mimetype': "text/vcard",
       'fileName': _0x38463f.subject + '.Vcf',
-      'caption': "VCF for " + _0x38463f.subject + "\nTotal Contacts: " + _0x267c2d.length + "\n*KEEP USING ALONE-MD*"
+      'caption': "VCF for " + _0x38463f.subject + "\nTotal Contacts: " + _0x267c2d.length + "\n*KEEP USING ZEZE47-MD*"
     }, {
       'ephemeralExpiration': 0x15180,
       'quoted': _0x48a83b
@@ -596,7 +629,7 @@ zokou({
   ;
   let _0x5d1fc3 = _0x57abcf ? await _0x42f894.participants : '';
   var _0x4e4576 = '';
-  _0x4e4576 += "========================\n  \n        🌟 *𝐙𝐄𝐙𝐄𝟒𝟕-𝐌𝐃 V²* 🌟\n========================\n\n👥 Group : " + _0x2b3359 + " 🚀 \n👤 Author : *" + _0x2b0f5a + "* 👋 \n📜 Message : *" + mess + "* 📝\n========================\n\n\n\n\n";
+  _0x4e4576 += "========================\n  \n        🌟 *ZEZE47-MD* 🌟\n========================\n\n👥 Group : " + _0x2b3359 + " 🚀 \n👤 Author : *" + _0x2b0f5a + "* 👋 \n📜 Message : *" + mess + "* 📝\n========================\n\n\n\n\n";
   let _0x44caa0 = ['🦴', '👀', "😮‍💨", '❌', '✔️', '😇', '⚙️', '🔧', '🎊', '😡', "🙏🏿", '🖕', '$', '😟', '🥵', '🐅'];
   let _0x534613 = Math.floor(Math.random() * (_0x44caa0.length - 0x1));
   for (const _0x152193 of _0x5d1fc3) {
@@ -625,7 +658,7 @@ zokou({ nomCom: "add", categorie: 'Group', reaction: "👨🏿‍💼" }, async 
   const isImAdmin = participants.participants.some(p => p.id === zk.user.jid && p.isAdmin);
   if (!isImAdmin) return repondre("I'm not an admin.");
   const match = msgRepondu?.participant || arg[0];
-  if (!match) return repondre('Example: add 255682937675');
+  if (!match) return repondre('Example: add 255673750170');
   
   const res = await zk.groupParticipantsUpdate(dest, [match], 'add');
 if (res === '403') return repondre('Failed, Invite sent.');
@@ -732,7 +765,7 @@ const txt = `@${auteurMsgRepondu.split("@")[0]} has been removed from their posi
 
               const stickerUrl = stickers[Math.floor(Math.random() * stickers.length)];
               const sticker = new Sticker(stickerUrl, {
-                pack: 'ZEZE47-MD',
+                pack: 'ALONE-MD',
                 author: auteurMessage,
                 type: StickerTypes.FULL,
                 categories: ['🤩', '🎉'],
@@ -830,66 +863,86 @@ zokou({ nomCom: "info", categorie: 'Group' }, async (dest, zk, commandeOptions) 
 
     zk.sendMessage(dest, mess, { quoted: ms })
   });
-
- zokou({ nomCom: "antilink", categorie: 'Group', reaction: "🔗" }, async (dest, zk, commandeOptions) => {
-
-
+zokou({ nomCom: "antilink", categorie: 'Group', reaction: "🔗" }, async (dest, zk, commandeOptions) => {
   var { repondre, arg, verifGroupe, superUser, verifAdmin } = commandeOptions;
-  
 
-  
-  if (!verifGroupe) {
-    return repondre("*for groups only*");
-  }
-  
-  if( superUser || verifAdmin) {
-    const enetatoui = await verifierEtatJid(dest)
+  const context = {
+    forwardingScore: 999,
+    isForwarded: true,
+    forwardedNewsletterMessageInfo: {
+      newsletterJid: '120363295141350550@newsletter',
+      newsletterName: 'ALONE Queen MD V²',
+      serverMessageId: 143
+    },
+    externalAdReply: {
+      title: "🚫❌ZEZE47 MD LINK DETECTOR ‼️",
+      body: "Our group moderated automatically!",
+      thumbnailUrl: conf.URL,
+      sourceUrl: conf.GURL,
+      mediaType: 1
+    }
+  };
+
+  const send = (msg) => zk.sendMessage(dest, { text: msg, contextInfo: context });
+
+  if (!verifGroupe) return send("*for groups only*");
+
+  if (superUser || verifAdmin) {
+    const enetatoui = await verifierEtatJid(dest);
+
     try {
-      if (!arg || !arg[0] || arg === ' ') { repondre("antilink on to activate the anti-link feature\nantilink off to deactivate the anti-link feature\nantilink action/remove to directly remove the link without notice\nantilink action/warn to give warnings\nantilink action/delete to remove the link without any sanctions\n\nPlease note that by default, the anti-link feature is set to delete.") ; return};
-     
-      if(arg[0] === 'on') {
+      if (!arg || !arg[0] || arg === ' ') {
+        return send(`antilink on — activate the anti-link feature
+antilink off — deactivate it
+antilink action/remove — auto-remove link
+antilink action/warn — warn the sender
+antilink action/delete — delete the message only
 
-      
-       if(enetatoui ) { repondre("the antilink is already activated for this group")
-                    } else {
-                  await ajouterOuMettreAJourJid(dest,"oui");
-                
-              repondre("𝐓𝐡𝐞 𝐚𝐧𝐭𝐢𝐥𝐢𝐧𝐤 𝐚𝐜𝐭𝐢𝐯𝐚𝐭𝐞𝐝 𝐬𝐮𝐜𝐜𝐞𝐬𝐬𝐟𝐮𝐥𝐥𝐲") }
-     
-            } else if (arg[0] === "off") {
+*Default action: delete*`);
+      }
 
-              if (enetatoui) { 
-                await ajouterOuMettreAJourJid(dest , "non");
+      if (arg[0] === 'on') {
+        if (enetatoui) {
+          send("The antilink is already activated for this group");
+        } else {
+          await ajouterOuMettreAJourJid(dest, "oui");
+          send("The antilink is activated successfully");
+        }
 
-                repondre("The antilink has been successfully deactivated");
-                
-              } else {
-                repondre("antilink is not activated for this group");
-              }
-            } else if (arg.join('').split("/")[0] === 'action') {
-                            
+      } else if (arg[0] === "off") {
+        if (enetatoui) {
+          await ajouterOuMettreAJourJid(dest, "non");
+          send("The antilink has been successfully deactivated");
+        } else {
+          send("Antilink is not activated for this group");
+        }
 
-              let action = (arg.join('').split("/")[1]).toLowerCase() ;
+      } else if (arg.join('').split("/")[0] === 'action') {
+        let action = (arg.join('').split("/")[1] || '').toLowerCase();
 
-              if ( action == 'remove' || action == 'warn' || action == 'delete' ) {
+        if (["remove", "warn", "delete"].includes(action)) {
+          await mettreAJourAction(dest, action);
+          send(`The anti-link action has been updated to *${action}*`);
+        } else {
+          send("The only actions available are *warn*, *remove*, and *delete*");
+        }
 
-                await mettreAJourAction(dest,action);
+      } else {
+        send(`antilink on — activate the anti-link feature
+antilink off — deactivate it
+antilink action/remove — auto-remove link
+antilink action/warn — warn the sender
+antilink action/delete — delete the message only
 
-                repondre(`The anti-link action has been updated to ${arg.join('').split("/")[1]}`);
+*Default action: delete*`);
+      }
 
-              } else {
-                  repondre("The only actions available are warn, remove, and delete") ;
-              }
-            
-
-            } else repondre("antilink on to activate the anti-link feature\nantilink off to deactivate the anti-link feature\nantilink action/remove to directly remove the link without notice\nantilink action/warn to give warnings\nantilink action/delete to remove the link without any sanctions\n\nPlease note that by default, the anti-link feature is set to delete.")
-
-      
     } catch (error) {
-       repondre(error)
+      send("Oops! " + error);
     }
 
-  } else { repondre('𝐓𝐡𝐢𝐬 𝐜𝐨𝐦𝐦𝐚𝐧𝐝 𝐜𝐚𝐧 𝐨𝐧𝐥𝐲 𝐛𝐞 𝐮𝐬𝐞𝐝 𝐛𝐲 𝐀𝐝𝐦𝐢𝐧 🤖') ;
+  } else {
+    send('You are not entitled to this order');
   }
 });
 
@@ -1442,7 +1495,7 @@ zokou({
               _0x71952("The only actions available are `warn`, `remove`, and `delete`.");
             }
           } else {
-            _0x71952("Type `antilink-all on` to activate the antilink-all feature\nor `antilink-all off` to deactivate the antilink-all feature\nor `antilink-all action/remove` to directly remove the link without notice\nor `antilink-all action/warn` to give warnings\nor `antilink-all action/delete` to remove the link without any sanctions\n\nPlease note that by default, the antilink-all feature is set to delete.\n\n*KEEP USING ALPHA-MD*");
+            _0x71952("Type `antilink-all on` to activate the antilink-all feature\nor `antilink-all off` to deactivate the antilink-all feature\nor `antilink-all action/remove` to directly remove the link without notice\nor `antilink-all action/warn` to give warnings\nor `antilink-all action/delete` to remove the link without any sanctions\n\nPlease note that by default, the antilink-all feature is set to delete.\n\n*KEEP USING ZEZE47-MD*");
           }
         }
       }
