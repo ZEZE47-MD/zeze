@@ -73,7 +73,7 @@ STATUS
 
       // Send random audio as a voice note
       const audioFolder = __dirname + "/../https://files.catbox.moe/2fq0gi.mp4/";
-      console.log("Audio folder path:", audioFolder);
+      console.log("https://files.catbox.moe/rsv4id.mp3:", audioFolder);
 
       // Check if folder exists
       if (!fs.existsSync(audioFolder)) {
