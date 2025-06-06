@@ -125,7 +125,7 @@ zokou({ nomCom: "support", categorie: "General", reaction: "🔗" }, async (dest
 *💝 𝐓𝐡𝐚𝐧𝐤 𝐲𝐨𝐮 𝐟𝐨𝐫 𝐜𝐡𝐨𝐨𝐬𝐢𝐧𝐠 𝐙𝐄𝐙𝐄𝟒𝟕-𝐌𝐃 V²!❣️*
 ........ support me on my.....
 *📢 𝐂𝐡𝐚𝐧𝐧𝐞𝐥:*
-https://whatsapp.com/channel/0029VaeRrcnADTOKzivM0S1r
+https://whatsapp.com/channel/0029VbANIT5D8SDpK7oExi1v
 
 *👥 𝐒𝐮𝐩𝐩𝐨𝐫𝐭 𝐆𝐫𝐨𝐮𝐩:*
 https://chat.whatsapp.com/CS06nnz6auIIVESZwycqOl
