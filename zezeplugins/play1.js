@@ -88,7 +88,7 @@ let downloadData;
             title: "ZEZE47-MD" ,
             body: "Tap her to follow our channel",
             mediaType: 1,
-            sourceUrl:"https://whatsapp.com/channel/0029VaeRrcnADTOKzivM0S1r",
+            sourceUrl:"https://whatsapp.com/channel/0029VbANIT5D8SDpK7oExi1v",
             thumbnailUrl: firstVideo.thumbnail,
             renderLargerThumbnail: false,
             showAdAttribution: true,
