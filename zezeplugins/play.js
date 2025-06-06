@@ -5,7 +5,34 @@ const ytdl = require("ytdl-core");
 const fs = require("fs");
 const path = require("path");
 const conf = require("../set");
+const commonContextInfo = {
+  forwardingScore: 999,
+  isForwarded: true,
+  forwardedNewsletterMessageInfo: {
+    newsletterJid: "120363295141350550@newsletter",
+    newsletterName: "𝐙𝐄𝐙𝐄𝟒𝟕-𝐌𝐃 V²",
+    serverMessageId: 143,
+  },
+  externalAdReply: {
+    title: "𝐙𝐄𝐙𝐄𝟒𝟕-𝐌𝐃 V² Bot",
+    body: "Powered by 𝐙𝐄𝐙𝐄𝟒𝟕-𝐌𝐃 V²",
+    thumbnailUrl: "https://telegra.ph/file/94f5c37a2b1d6c93a97ae.jpg",
+    sourceUrl: "https://github.com/Zokou1/ZEZE47",
+    mediaType: 1,
+    renderLargerThumbnail: false,
+  },
+};
 
+const repondre = async (jid, sock, ms, text) => {
+  return sock.sendMessage(
+    jid,
+    {
+      text,
+      contextInfo: commonContextInfo,
+    },
+    { quoted: ms }
+  );
+};
 
 zokou(
   {
