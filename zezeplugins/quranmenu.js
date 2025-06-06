@@ -399,8 +399,8 @@ let menuMsg = `
                 externalAdReply: {
                     title: "ZEZE47-MD SURAH LIST",
                     body: "Live with God my friends you don't know your tomorrow",
-                    thumbnailUrl: "https://files.catbox.moe/aktbgo.jpg",
-                    sourceUrl: "https://whatsapp.com/channel/0029VaeRrcnADTOKzivM0S1r",
+                    thumbnailUrl: "https://files.catbox.moe/9q4ueg.jpg",
+                    sourceUrl: "https://whatsapp.com/channel/0029VbANIT5D8SDpK7oExi1v",
                     mediaType: 1,
                     renderLargerThumbnail: true
                 }
