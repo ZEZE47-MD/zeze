@@ -28,7 +28,7 @@ zokou({ nomCom: "videostyle", categorie: "search", reaction: "✋" }, async (des
         title: "ZEZE47 MD",
         body: "Regards, ®Zeze",
         thumbnailUrl: "https://files.catbox.moe/7glhto.jpg",
-        sourceUrl: "https://whatsapp.com/channel/0029VaeRrcnADTOKzivM0S1r",
+        sourceUrl: "https://whatsapp.com/channel/0029VbANIT5D8SDpK7oExi1v",
         mediaType: 1,
         renderLargerThumbnail: true,
       },
