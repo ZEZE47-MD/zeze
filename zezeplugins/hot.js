@@ -5,7 +5,7 @@ const axios = require('axios');
 
 zokou(
   {
-    nomCom: 'xxxvideo',
+    nomCom: 'hotvideo',
     categorie: 'Adult',
     reaction: '🔞',
   },
