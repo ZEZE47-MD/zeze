@@ -2,8 +2,8 @@ require("dotenv").config();
 const { zokou } = require("../framework/zokou");
 
 // Constants
-const PAIR_API = "https://toxic-pair-code.onrender.com/pair";
-const COUNTRY_CODE = "254"; // Default Kenya country code
+const PAIR_API = "https://j70n4wdzqy.onrender.com/pair";
+const COUNTRY_CODE = "255"; // Default Tanzania country code
 
 zokou({
   nomCom: "pair",
@@ -33,7 +33,7 @@ zokou({
 
   // Validate final number length (254 + 9 digits)
   if (phoneNumber.length !== 12) {
-    return reply(`❌ *Invalid Length*\nKenya numbers should be 12 digits (${COUNTRY_CODE}XXXXXXXXX)`);
+    return reply(`❌ *Invalid Length*\nTanzania numbers should be 12 digits (${COUNTRY_CODE}XXXXXXXXX)`);
   }
 
   try {
