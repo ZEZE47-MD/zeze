@@ -42,13 +42,13 @@ zokou({ nomCom: "repo", categorie: "General" }, async (dest, zk, commandeOptions
         audio: { url: AUDIO_URL }, 
             mimetype: 'audio/mp4', 
             ptt: true, // Voice note form
-      text: ` Current speed of ALONE MD BOT is.: ${ping}ms\n🍒🍓`,
+      text: ` Current speed of ZEZE47 MD BOT is.: ${ping}ms\n🍒🍓`,
       contextInfo: {
         forwardingScore: 999,
             isForwarded: true,
             forwardedNewsletterMessageInfo: {
               newsletterJid: '120363295141350550@newsletter',
-              newsletterName: 'ALONE Queen MD V²',
+              newsletterName: 'ZEZE47 MD V²',
               serverMessageId: 143},
         externalAdReply: {
           
