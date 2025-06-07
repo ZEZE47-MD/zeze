@@ -40,7 +40,7 @@ zokou({ nomCom: "repo", categorie: "General" }, async (dest, zk, commandeOptions
     try {
     await zk.sendMessage(dest, {
         audio: { url: AUDIO_URL }, 
-            mimetype: 'audio/mp4', 
+            mimetype: 'https://files.catbox.moe/ac202o.mp3', 
             ptt: true, // Voice note form
       text: ` Current speed of ZEZE47 MD BOT is.: ${ping}ms\n🍒🍓`,
       contextInfo: {
