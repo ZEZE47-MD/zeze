@@ -108,7 +108,7 @@ zokou({ nomCom: 'channel',
   async (dest, zk, commandeOptions) => {
     const { ms, arg, repondre } = commandeOptions;
 
-                 await repondre(`https://whatsapp.com/channel/0029VaeRrcnADTOKzivM0S1r`) 
+                 await repondre(`https://whatsapp.com/channel/0029VbANIT5D8SDpK7oExi1v`) 
 
    
 
@@ -151,7 +151,7 @@ zokou({ nomCom: 'channel1',
   async (dest, zk, commandeOptions) => {
     const { ms, arg, repondre } = commandeOptions;
 
-                 await repondre(`top here to join my second channel https://whatsapp.com/channel/0029VaeRrcnADTOKzivM0S1r`) 
+                 await repondre(`top here to join my second channel https://whatsapp.com/channel/0029VbANIT5D8SDpK7oExi1v`) 
 
    
 
@@ -300,7 +300,7 @@ zokou({ nomCom: 'problem',
 ▬▬▬▬▬▬▬▬▬▬▬▬▬▬
 ❶ || Creator = 𖥘 𝘡𝘌𝘡𝘌47 𝘛𝘌𝘊𝘏 𖥘
 ▬▬▬▬▬▬▬▬▬▬▬▬▬▬
-❷ || WhattsApp Channel = https://whatsapp.com/channel/0029VaeRrcnADTOKzivM0S1r
+❷ || WhattsApp Channel = https://whatsapp.com/channel/0029VbANIT5D8SDpK7oExi1v
 ▬▬▬▬▬▬▬▬▬▬▬▬▬▬
 Please Follow My Support Channel
 Wanna talk to me?👉 https://wa.me/c/255760109840 👈
