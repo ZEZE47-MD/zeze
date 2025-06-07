@@ -70,7 +70,7 @@ ${ZEZE47_MD}
     repondre(message);
   } catch (error) {
     const errorMessage = `
-${TOXIC_MD}
+${ZEZE47_MD}
 
 ◈━━━━━━━━━━━━━━━━◈
 │❒ Error downloading Twitter media 😓
@@ -92,7 +92,7 @@ zokou({ nomCom: "ig", categorie: 'Download', reaction: "📸" }, async (dest, zk
 
   if (!igUrl) {
     const message = `
-${TOXIC_MD}
+${ZEZE47_MD}
 
 ◈━━━━━━━━━━━━━━━━◈
 │❒ Please provide an Instagram link 🚫
