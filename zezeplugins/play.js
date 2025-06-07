@@ -22,7 +22,7 @@ zokou(
       isForwarded: true,
       forwardedNewsletterMessageInfo: {
         newsletterJid: "120363295141350550@newsletter",
-        newsletterName: "ALONE Queen MD V²",
+        newsletterName: "ZEZE47 MD V²",
         serverMessageId: 143,
       },
       externalAdReply: {
@@ -124,7 +124,7 @@ zokou({
               },
         externalAdReply: {
           title: "ZEZE47 MD VIDEO DOWNLOADER",
-          body: "Enjoy using ALONE MD",
+          body: "Enjoy using ZEZE47 MD",
           thumbnailUrl: conf.URL,
           mediaType: 1,
           renderLargerThumbnail: false,
@@ -253,7 +253,7 @@ zokou({
         isForwarded: true,
         forwardedNewsletterMessageInfo: {
           newsletterJid: '120363295141350550@newsletter',
-          newsletterName: 'ALONE Queen MD V²',
+          newsletterName: 'ZEZE47 MD V²',
           serverMessageId: 143
         },
         externalAdReply: {
@@ -304,7 +304,7 @@ zokou({
         author: "Unknown",
         lyrics: res.data.content,
         thumbnail: "https://telegra.ph/file/94f5c37a2b1d6c93a97ae.jpg",
-        link: "https://github.com/Zokou1/ALONE-MD"
+        link: "https://github.com/Zokou1/zeze"
       };
     }
   ];
