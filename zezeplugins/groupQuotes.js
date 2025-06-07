@@ -37,7 +37,7 @@ Powered by *ZEZE47-MD*`);
 👤 Character: ${quote.character}
 💬 Quote: ${quote.quote}
 
-Powered by *ALONE-MD*`);
+Powered by *ZEZE47-MD*`);
         });
     } catch (e) {
       repondre('Erreur lors de la génération de la citation : ' + e.message);
