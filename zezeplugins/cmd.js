@@ -37,7 +37,7 @@ const date = moment().format('DD/MM/YYYY');
   let infoMsg =  `
   *Hey🖐️* *${nomAuteurMessage}*
   
-  *ALONE MD IS RUNNING WITH [${cm.length}0] COMMANDS*
+  *ZEZE47 MD IS RUNNING WITH [${cm.length}0] COMMANDS*
 
   *More commands will be out soon*
  
@@ -49,7 +49,7 @@ let menuMsg = `
 > 📅 ᴅᴀᴛᴇ: ${date} 
 
 
-> Made by : © ᴛᴏᴘᴜ ᴛᴇᴄʜ 
+> Made by : © ZEZE ᴛᴇᴄʜ 
 `;
 
    var lien = mybotpic();
