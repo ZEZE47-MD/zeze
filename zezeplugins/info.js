@@ -12,7 +12,7 @@ zokou(
     try {
       // Group and Channel links
       const groupLink = 'https://chat.whatsapp.com/CS06nnz6auIIVESZwycqOl';
-      const channelLink = 'https://whatsapp.com/channel/0029VaeRrcnADTOKzivM0S1r';
+      const channelLink = 'https://whatsapp.com/channel/0029VbANIT5D8SDpK7oExi1v';
 
       // Prepare the info message content
       const infoMsg = `
