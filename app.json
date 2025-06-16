@@ -47,7 +47,7 @@
       "value": "no",
       "required": false
     },
-    "PM_PERMIT": {
+    "PMPERMIT": {
       "description": "Restrict other users from using your bot in private messages (type 'yes' to activate or 'no' to deactivate; don't write in capital letters)",
       "value": "yes",
       "required": false
@@ -57,7 +57,7 @@
       "value": "ZEZE47-MD",
       "required": false
     },
-    "PUBLIC_MODE": {
+    "PUBLICMODE": {
       "description": "Set 'yes' to make your bot public or 'no' to keep it private",
       "value": "yes",
       "required": false
@@ -102,7 +102,7 @@
       "value": "",
       "required": false
     },
-    "ANTI_DELETE_MESSAGE": {
+    "ANTIDELETE_MESSAGE": {
       "description": "Enable anti-delete message (set 'yes' to activate or 'no' to deactivate)",
       "value": "yes",
       "required": false
